@@ -1,0 +1,48 @@
+.department-box{
+  float: left;
+  width: 56%;
+  margin-right: 2%;
+  background-color: #fff;
+  padding: 20px;
+}
+.user-box{
+  width: 42%;
+  float: left;
+  background-color: #fff;
+  padding: 20px;
+}
+.department-name{
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+/* 改变按钮颜色 */
+.ant-btn-primary {
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+}
+
+.ant-btn-primary{
+  color: #fff;
+  background-color: #6794c5;
+  border-color: #6794c5;
+}
+
+:host ::ng-deep .ant-btn-group .ant-btn-primary+.ant-btn-primary, .ant-btn-group .ant-btn-primary:last-child:not(:first-child) {
+  border-left-color: #fff;
+}
+
+:host ::ng-deep .ant-btn-group .ant-btn-primary:not(:first-child):not(:last-child) {
+  border-right-color: #fff;
+  border-left-color: #fff;
+}
+
+:host ::ng-deep .ant-btn-group .ant-btn-primary:first-child:not(:last-child) {
+  border-right-color: #fff;
+}
+
+.ant-form-item {
+  margin: 0 0 16px;
+}

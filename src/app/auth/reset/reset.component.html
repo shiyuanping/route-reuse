@@ -1,0 +1,75 @@
+<div class="body">
+
+    <div class="reset-box">
+        <div class="reset-title">
+          密码重置
+        </div>
+        <div class="reset-input">
+          <form nz-form [formGroup]="resetForm">
+              <nz-form-item>
+                  <nz-form-control>
+                      <nz-input-group nzPrefixIcon="anticon anticon-user">
+                          <input type="text" nz-input formControlName="email" placeholder="请输入用户名！">
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="email.dirty && email.errors">
+                          <ng-container *ngIf="email.hasError('required')">
+                              必填!
+                          </ng-container>
+                      </nz-form-explain>
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                  <nz-form-control>
+                      <nz-input-group nzPrefixIcon="anticon anticon-safety" [nzSuffix]="addOnAfterCode">
+                          <input type="text" nz-input formControlName="code" placeholder="邮箱验证码">
+                      </nz-input-group>
+                      <ng-template #addOnAfterCode>
+                          <button nz-button nzType="primary"
+                              style="height: 38px;"
+                              (click)="sendCode()"
+                              [disabled]="email.invalid || isSend">
+                              {{isSend ? '重新发送验证码 ' + resendTime : '发送验证码'}}
+                          </button>
+                      </ng-template>
+                      <nz-form-explain *ngIf="code.dirty && code.errors">验证码必须为6位数字!</nz-form-explain>
+                      <nz-form-extra>验证码可能会被放置在用户绑定邮箱的垃圾箱中.</nz-form-extra>
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                  <nz-form-control>
+                      <nz-input-group nzPrefixIcon="anticon anticon-lock">
+                          <input type="password" nz-input formControlName="password" placeholder="密码"
+                              (ngModelChange)="updateConfirmValidator()">
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="password.dirty && password.errors">请输入密码!</nz-form-explain>
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                  <nz-form-control>
+                      <nz-input-group nzPrefixIcon="anticon anticon-lock">
+                          <input type="password" nz-input formControlName="confirm" placeholder="确认密码">
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="confirm.dirty && confirm.errors">
+                          <ng-container *ngIf="confirm.hasError('required')">
+                              请输入密码!
+                          </ng-container>
+                          <ng-container *ngIf="confirm.hasError('confirm')">
+                              密码不一致!
+                          </ng-container>
+                      </nz-form-explain>
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                  <nz-form-control>
+                      <button nz-button [nzType]="'primary'"
+                          class="loginbtn"
+                          [disabled]="!resetForm.valid && !isConfirm"
+                          (click)="reset()">确定</button>
+                      <a routerLink="/auth/login" class="gotologin">返回登录</a>
+                  </nz-form-control>
+              </nz-form-item>
+          </form>
+        </div>
+    </div>
+  </div>
+

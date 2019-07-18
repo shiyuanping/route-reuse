@@ -1,0 +1,133 @@
+*{
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+.body{
+  background: url(../../../assets/images/login/miniquan.png)  no-repeat center center fixed;
+  background-size: 100%;
+  position: relative;
+  width:100%;
+  height:100%;
+}
+/* .box{
+  position: absolute;
+  top: 200px;
+  right: 15%;
+  width: 300px;
+  height: 400px;
+  background-color: pink;
+} */
+.login-title{
+  position: absolute;
+  top: 180px;
+  right: 14.5%;
+  font-size: 46px;
+  color: #fff;
+  /* background-color: aquamarine; */
+}
+.login-box{
+  position: absolute;
+  top: 280px;
+  right: 14.5%;
+  width: 360px;
+  height: 400px;
+  background-color: #fff;
+  /* background-color: rgb(255,255,255,0.95); */
+  border-radius: 36px;
+}
+.title {
+  /* background-color: pink; */
+  color: #5890C3;
+  font-size: 32px;
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  padding-left: 131px;
+  height: 120px;
+  line-height: 120px;
+}
+.title img{
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 25px;
+  left: 66px;
+}
+.form{
+  width: 280px;
+  height: 200px;
+  /* background-color: red; */
+  margin:0 auto;
+  margin-bottom: 30px;
+}
+.form input{
+  box-sizing: border-box;
+  width: 278px;
+  height: 47px;
+  padding-left: 56px;
+  font-size: 17px;
+}
+.form img{
+  position: absolute;
+  top:116px;
+  width: 56px;
+  height: 56px;
+}
+.text{
+  width: 280px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.text a{
+  float: right;
+  color: #5890C3;
+}
+.loginbtn{
+  display: block;
+  width: 180px;
+  height: 38px;
+  background-color: #5890C3;
+  border: none;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 20px;
+  outline: none;
+}
+
+:host ::ng-deep .anticon:before {
+  display: block;
+  font-family: anticon!important;
+  font-size: 24px;
+}
+
+.forget{
+  float: right;
+  color: #5890C3;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+:host ::ng-deep .ant-btn-primary {
+  width: 180px;
+  height: 38px;
+  color: #fff;
+  background-color: #5890C3;
+  border-color: #5890C3;
+  border-radius: 20px;
+}
+
+:host ::ng-deep .ant-btn-primary.disabled, .ant-btn-primary.disabled.active, .ant-btn-primary.disabled:active, .ant-btn-primary.disabled:focus, .ant-btn-primary.disabled:hover, .ant-btn-primary[disabled], .ant-btn-primary[disabled].active, .ant-btn-primary[disabled]:active, .ant-btn-primary[disabled]:focus, .ant-btn-primary[disabled]:hover{
+  color: rgba(0,0,0,.25);
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  /* color: #fff;
+  background-color: #5890C3;
+  border-color: #5890C3; */
+}
+
+.input-box{
+  width: 280px;
+  height: 146px;
+}
+.account-input{
+  width: 280px;
+  height: 76px;
+}

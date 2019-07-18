@@ -1,0 +1,82 @@
+<div class="table-box">
+  <div style="margin-bottom: 16px;">
+    <button nz-button [disabled]="disabledButton" [nzType]="'primary'" [nzLoading]="operating" (click)="operateData()">
+      取消全选
+    </button>
+    <button nz-button [nzType]="'primary'" style="margin-left:12px;">清除数据</button>
+    <span style="margin-left: 8px;" *ngIf="checkedNumber">已选择{{checkedNumber}}项</span>
+    <button nz-button [nzType]="'primary'" style="float: right;" (click)="showModal()"><span>添加用户</span></button>
+    <button nz-button [nzType]="'primary'" style="float: right;margin-right: 12px;">导入用户</button>
+    <button nz-button [nzType]="'primary'" style="float: right;margin-right: 12px;">查询</button>
+    <input nz-input placeholder="输入数据" nzSize="default" style="width: 200px;float: right;">
+  </div>
+  <nz-table
+    #rowSelectionTable
+    [nzData]="dataSet"
+    (nzCurrentPageDataChange)="currentPageDataChange($event)"
+    (nzPageIndexChange)="refreshStatus()"
+    (nzPageSizeChange)="refreshStatus()"
+    nzBordered>
+    <thead>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th>用户名</th>
+        <th>姓名</th>
+        <th>部门</th>
+        <th>岗位</th>
+        <th>手机号</th>
+        <th nzWidth="100px">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="refreshStatus($event)"></td>
+        <td>{{data.name}}</td>
+        <td>{{data.age}}</td>
+        <td>{{data.address}}</td>
+        <td></td>
+        <td></td>
+        <td>
+          <a>编辑</a>
+          <a style="margin-left: 10px;">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'新增用户'" [nzContent]="modalContent" [nzWidth]="600" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+  <ng-template #modalContent>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" style="max-width: 700px;">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired nzFor="name">用户名</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input id="name" type="text" nz-input formControlName="name">
+          <nz-form-explain *ngIf="validateForm.get('name').dirty && validateForm.get('name').errors">请输入部门名称!</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzFor="tel">部门电话</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input id="tel" type="text" nz-input formControlName="tel">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzFor="fax">部门传真</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input id="fax" type="text" nz-input formControlName="fax">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzFor="address">部门地址</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input id="address" type="text" nz-input formControlName="address">
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+
+  <ng-template #modalFooter>
+      <button nz-button nzType="primary" (click)="handleOk()" [disabled]="validateForm.invalid">保存</button>
+    </ng-template>
+</nz-modal>
